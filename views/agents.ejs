@@ -1,0 +1,16 @@
+<%- include("_header") -%>
+
+<h1>List</h1>
+
+<ul>
+
+    <% for (const agent of model) { %>
+      <li>
+        <%= agent.noms %>
+        <em>(<%= agent.fonction %>)</em>
+      </li>
+    <% } %>
+  
+  </ul>
+
+<%- include("_footer") -%>
