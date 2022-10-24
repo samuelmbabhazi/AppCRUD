@@ -2,17 +2,77 @@
 
 <%- include("_header") -%>
 
-<h1>List</h1>
-
-<ul>
-
+<div class="table w-full p-2">
+  <table class="w-full border">
+    <thead>
+      <tr class="bg-gray-50 border-b">
+        
+        <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+          <div class="flex items-center justify-center">
+            ID
+           
+          </div>
+        </th>
+        <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+          <div class="flex items-center justify-center">
+            Name
+            
+            </svg>
+          </div>
+        </th>
+        <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+          <div class="flex items-center justify-center">
+            Function
+            
+          </div>
+        </th>
+        <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+          <div class="flex items-center justify-center">
+            Contact
+            
+            </svg>
+          </div>
+        </th>
+        <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+          <div class="flex items-center justify-center">
+            Adress
+            
+            </svg>
+          </div>
+        </th>
+      </tr>
+    </thead>
     <% for (const agent of model) { %>
-      <li>
-        <%= agent.noms %>
-        <em>(<%= agent.fonction %>)</em>
-      </li>
+    <tbody>
+      <tr class="bg-gray-100 text-center border-b text-sm text-gray-600">
+        
+       
+        <td class="p-2 border-r"><%= agent.ID %></td>
+        <td class="p-2 border-r"><%= agent.noms %></td>
+        <td class="p-2 border-r"><%= agent.fonction %></td>
+        <td class="p-2 border-r"><%= agent.contact %></td>
+        <td class="p-2 border-r"><%= agent.adresse %></td>
+      
+        <td>
+          <a
+            href="#"
+            class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin"
+            >Edit</a
+          >
+          <a
+            href="#"
+            class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin"
+            >Remove</a
+          >
+        </td>
+      </tr>
+    </tbody>
     <% } %>
-  
-  </ul>
+  </table>
+</div>
+
+
+
+
 
 <%- include("_footer") -%>

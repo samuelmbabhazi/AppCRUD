@@ -21,7 +21,7 @@ const pool = new Pool({
 });
 
 const sql_create = `
-DROP TABLE IF EXIST agent;
+
 CREATE TABLE IF NOT EXISTS agent (
   ID SERIAL PRIMARY KEY,
   noms VARCHAR(100) NOT NULL,
