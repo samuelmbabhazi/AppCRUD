@@ -5,12 +5,9 @@ const { Pool } = require("pg");
 const PORT = 4000 ;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+const routes = require('./controllers/routes')
 
-
-app.get("/", (req, res) => {
-  res.send("Bonjour le monde...");
-  res.render("index");
-});
+app.use(routes)
 
 //connexion a la base de donnees
 const pool = new Pool({
@@ -20,6 +17,7 @@ const pool = new Pool({
   password: "wmJq60NzgDASt9hYYt1FI2JAPkUWepV9",
   port: PORT
 });
+
 
 
 app.set("view engine", "ejs");
@@ -43,5 +41,6 @@ pool.query(sql_create, [], (err, result) => {
   console.log("Création réussie de la table 'agents'");
 });
 app.listen(4000, () => {
-    console.log("Serveur démarré au port : " + PORT);
+    console.log("Serveur démarré au port :" + PORT);
+
   });
