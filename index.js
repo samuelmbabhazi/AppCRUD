@@ -13,6 +13,20 @@ const pool = new Pool({
 
 console.log("Connexion réussie à la base de données");
 
+const sql_create = `CREATE TABLE IF NOT EXISTS agent (
+  ID SERIAL PRIMARY KEY,
+  noms VARCHAR(100) NOT NULL,
+  fonction VARCHAR(100) NOT NULL,
+  contact VARCHAR(100) NOT NULL,
+  adresse VARCHAR(100) NOT NULL
+);`;
+
+pool.query(sql_create, [], (err, result) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log("Création réussie de la table 'agents'");
+});
 app.listen(4000, () => {
     console.log("Serveur démarré au port : 4000!");
   });
