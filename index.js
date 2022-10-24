@@ -8,7 +8,6 @@ app.set("views", path.join(__dirname, "views"));
 
 
 app.get("/", (req, res) => {
-  res.send("Bonjour le monde...");
   res.render("index");
 });
 
@@ -20,10 +19,6 @@ const pool = new Pool({
   password: "wmJq60NzgDASt9hYYt1FI2JAPkUWepV9",
   port: PORT
 });
-
-
-app.set("view engine", "ejs");
-// app.set("views", path.join(__dirname, "views"));
 
 
 console.log("Connexion réussie à la base de données");
