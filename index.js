@@ -51,13 +51,12 @@ pool.query(sql_create, [], (err, result) => {
       console.log("Alimentation réussie de la table 'agent'");
   });
 
-  app.get("/agent", (req, res) => {
+  app.use("/agent", (req, res) => {
     const sql = "SELECT * FROM agent";
     pool.query(sql, [], (err, result) => {
       if (err) {
         return console.error(err.message);
       }
-      console.log(result.rows)
       res.render("agents", { model: result.rows });
     });
   });
