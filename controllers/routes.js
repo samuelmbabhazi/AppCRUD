@@ -10,6 +10,10 @@ router.get("/accueil", (req, res) => {
     res.render(`index`);
   });
 
+//about
+router.get("/about", (req, res) => {
+  res.render(`about`);
+});
 
 
 
