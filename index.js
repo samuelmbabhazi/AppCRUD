@@ -13,7 +13,7 @@ const pool = new Pool({
 });
 
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+// app.set("views", path.join(__dirname, "views"));
 
 console.log("Connexion réussie à la base de données");
 
