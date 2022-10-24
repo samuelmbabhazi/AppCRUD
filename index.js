@@ -8,7 +8,7 @@ const pool = new Pool({
   host: "peanut.db.elephantsql.com",
   database: "dsiqfcrw",
   password: "wmJq60NzgDASt9hYYt1FI2JAPkUWepV9",
-  port: 5432
+  port: PORT
 });
 
 console.log("Connexion réussie à la base de données");
