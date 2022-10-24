@@ -10,9 +10,6 @@ app.set("views", path.join(__dirname, "views"));
 const routes = require('./controllers/routes')
 
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
 app.use(routes)
 
 //connexion a la base de donnees
