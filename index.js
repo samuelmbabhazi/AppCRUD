@@ -61,6 +61,7 @@ app.get("/agent", (req, res) => {
   });
 });
 
+
 app.get("/create", (req, res) => {
   res.render("create", { model: {} });
 });
@@ -71,6 +72,16 @@ app.get("/create", (req, res) => {
     pool.query(sql, book, (err, result) => {
       // if (err) ...
       res.redirect("/livres");
+       });
+      }); 
+
+  app.use("/agent", (req, res) => {
+    const sql = "SELECT * FROM agent";
+    pool.query(sql, [], (err, result) => {
+      if (err) {
+        return console.error(err.message);
+      }
+      res.render("agents", { model: result.rows });
     });
   });
 
