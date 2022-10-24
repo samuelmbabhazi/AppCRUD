@@ -1,7 +1,6 @@
 {
   "name": "crud_storm",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css",
   "scripts": {
@@ -15,9 +14,20 @@
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
     "postcss": "^8.4.18",
     "postcss-cli": "^10.0.0",
     "pug": "^3.0.2",
     "tailwindcss": "^3.2.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samuelmbabhazi/AppCRUD.git"
+  },
+  "bugs": {
+    "url": "https://github.com/samuelmbabhazi/AppCRUD/issues"
+  },
+  "homepage": "https://github.com/samuelmbabhazi/AppCRUD#readme",
+  "description": ""
 }
