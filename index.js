@@ -3,7 +3,16 @@ const path = require("path");
 const app = Express();
 const { Pool } = require("pg");
 const PORT = 4000 ;
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
+
+app.get("/", (req, res) => {
+  res.send("Bonjour le monde...");
+  res.render("index");
+});
+
+//connexion a la base de donnees
 const pool = new Pool({
   user: "dsiqfcrw ",
   host: "peanut.db.elephantsql.com",
@@ -12,8 +21,8 @@ const pool = new Pool({
   port: PORT
 });
 
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+
+
 
 console.log("Connexion réussie à la base de données");
 
