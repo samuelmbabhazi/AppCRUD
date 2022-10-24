@@ -8,8 +8,11 @@ const { Pool } = require("pg");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+const routes = require('./controllers/routes')
+
 
 app.get("/", (req, res) => {
+  res.send("Bonjour le monde...");
   res.render("index");
 });
 
@@ -21,6 +24,7 @@ const pool = new Pool({
   password: "wmJq60NzgDASt9hYYt1FI2JAPkUWepV9",
   port: PORT,
 });
+
 
 app.set("view engine", "ejs");
 // app.set("views", path.join(__dirname, "views"));
@@ -41,6 +45,6 @@ pool.query(sql_create, [], (err, result) => {
   }
   console.log("Création réussie de la table 'agents'");
 });
-app.listen(4001, () => {});
-
-console.log("Serveur démarré au port : " + PORT);
+app.listen(4000, () => {
+    console.log("Serveur démarré au port : " + PORT);
+  });
