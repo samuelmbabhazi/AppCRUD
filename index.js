@@ -2,14 +2,16 @@ const Express = require('express');
 const path = require("path");
 const app = Express();
 const { Pool } = require("pg");
-const PORT = 40001 ;
+const PORT = 4000 ;
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+const routes = require('./controllers/routes')
 
 app.get("/", (req, res, next) => {
   res.render("index");
 });
+app.use(routes)
 
 //connexion a la base de donnees
 const pool = new Pool({
@@ -19,6 +21,7 @@ const pool = new Pool({
   password: 'wmJq60NzgDASt9hYYt1FI2JAPkUWepV9',
   port: 5432
 });
+
 
 const sql_create = `CREATE TABLE IF NOT EXISTS agent (
   ID SERIAL PRIMARY KEY,
