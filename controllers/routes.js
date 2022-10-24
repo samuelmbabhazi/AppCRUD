@@ -21,5 +21,11 @@ router.get("/data", (req, res) => {
 });
 
 
+//livres
+router.get("/livres", (req, res) => {
+  res.render(`livres`);
+});
+
+
 
 module.exports = router;
