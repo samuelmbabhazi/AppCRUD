@@ -21,9 +21,6 @@ const pool = new Pool({
   port: PORT
 });
 
-
-
-
 console.log("Connexion réussie à la base de données");
 
 const sql_create = `CREATE TABLE IF NOT EXISTS agent (
