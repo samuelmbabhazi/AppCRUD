@@ -7,10 +7,9 @@ const PORT = 4000;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 const routes = require("./controllers/routes");
-
+app.use(Express.urlencoded({ extended: false })); // <--- paramétrage du middleware
 
 app.use(routes);
-
 
 //connexion a la base de donnees
 const pool = new Pool({
@@ -21,7 +20,9 @@ const pool = new Pool({
   port: 5432,
 });
 
-const sql_create = `CREATE TABLE IF NOT EXISTS agent (
+const sql_create = `
+DROP TABLE IF EXIST agent;
+CREATE TABLE IF NOT EXISTS agent (
   ID SERIAL PRIMARY KEY,
   noms VARCHAR(100) NOT NULL,
   fonction VARCHAR(100) NOT NULL,
@@ -37,10 +38,10 @@ pool.query(sql_create, [], (err, result) => {
 });
 
 // Alimentation de la table
-const sql_insert = `INSERT INTO agent (ID, noms, fonction, contact,adresse) VALUES
-    (1, 'Abel Mbula', 'Coach', '40-940-39049', 'Goma'),
-    (2, 'Doddy Matabaro', 'Coach', '40-940-39049', 'Goma'),
-    (3, 'Shako BEnjamin', 'Coach', '40-940-39049', 'Goma')
+const sql_insert = `INSERT INTO agent ( noms, fonction, contact,adresse) VALUES
+    ( 'Abel Mbula', 'Coach', '40-940-39049', 'Goma'),
+    ( 'Doddy Matabaro', 'Coach', '40-940-39049', 'Goma'),
+    ( 'Shako BEnjamin', 'Coach', '40-940-39049', 'Goma')
     
   ON CONFLICT DO NOTHING;`;
 pool.query(sql_insert, [], (err, result) => {
@@ -65,15 +66,25 @@ app.get("/create", (req, res) => {
   res.render("create", { model: {} });
 });
 
-  app.post("/create", (req, res) => {
-    const sql = "INSERT INTO Livres (Titre, Auteur, Commentaires) VALUES ($1, $2, $3)";
-    const book = [req.body.titre, req.body.auteur, req.body.commentaires];
-    pool.query(sql, book, (err, result) => {
-      // if (err) ...
-      res.redirect("/livres");
+app.post("/create", (req, res) => {
+  const sql =
+    "INSERT INTO agent (noms, fonction,contact,adresse ) VALUES ($1, $2, $3, $4)";
+  console.log(req.body);
 
-    });
+  const book = [
+    req.body.noms,
+    req.body.fonction,
+    req.body.contact,
+    req.body.adresse,
+  ];
+  pool.query(sql, book, (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.redirect("/create");
+    }
+    res.redirect("/agent");
   });
+});
 
 app.listen(PORT, () => {
   console.log("Serveur démarré au port : " + PORT);
