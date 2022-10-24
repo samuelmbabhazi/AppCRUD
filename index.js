@@ -8,10 +8,9 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 const routes = require("./controllers/routes");
 
-app.get("/", (req, res, next) => {
-  res.render("index");
-});
+
 app.use(routes);
+
 
 //connexion a la base de donnees
 const pool = new Pool({
