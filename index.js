@@ -18,6 +18,12 @@ const pool = new Pool({
   port: PORT
 });
 
+
+
+app.set("view engine", "ejs");
+// app.set("views", path.join(__dirname, "views"));
+
+
 console.log("Connexion réussie à la base de données");
 
 const sql_create = `CREATE TABLE IF NOT EXISTS agent (
