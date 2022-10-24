@@ -5,12 +5,9 @@ const { Pool } = require("pg");
 const PORT = 4000 ;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+const routes = require('./controllers/routes')
 
-
-app.get("/", (req, res) => {
-  res.send("Bonjour le monde...");
-  res.render("index");
-});
+app.use(routes)
 
 //connexion a la base de donnees
 const pool = new Pool({
