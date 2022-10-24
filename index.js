@@ -62,9 +62,11 @@ app.get("/agent", (req, res) => {
   });
 });
 
+
 app.get("/create", (req, res) => {
   res.render("create", { model: {} });
 });
+
 
 app.post("/create", (req, res) => {
   const sql =
@@ -83,6 +85,7 @@ app.post("/create", (req, res) => {
       return res.redirect("/create");
     }
     res.redirect("/agent");
+
   });
 });
 
