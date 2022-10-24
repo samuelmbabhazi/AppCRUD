@@ -1,16 +1,35 @@
 <%- include("_header") -%>
 
-<h1>List</h1>
+<h1>Liste des agents (<%= model.length %>)</h1>
 
-<ul>
-
-    <% for (const agent of model) { %>
-      <li>
-        <%= agent.noms %>
-        <em>(<%= agent.fonction %>)</em>
-      </li>
-    <% } %>
-  
-  </ul>
+<div class="table-responsive-sm">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Noms</th>
+        <th>Fonction</th>
+        <th>Contact</th>
+        <th>Adresse</th>
+        <th class="d-print-none">
+          <a class="btn btn-sm btn-success" href="/create">Ajouter</a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (const agent of model) { %>
+        <tr>
+          <td><%= agent.noms %></td>
+          <td><%= agent.fonction %></td>
+          <td><%= agent.contact %></td>
+          <td><%= agent.adresse %></td>
+          <td class="d-print-none">
+            <a class="btn btn-sm btn-warning" href="/edit/<%= agent.ID %>">Modifier</a>
+            <a class="btn btn-sm btn-danger" href="/delete/<%= agent.ID %>">Effacer</a>
+          </td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
 
 <%- include("_footer") -%>

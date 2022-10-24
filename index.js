@@ -2,7 +2,7 @@ const Express = require("express");
 const path = require("path");
 const app = Express();
 const { Pool } = require("pg");
-const PORT = 4000;
+const PORT = 40001;
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
