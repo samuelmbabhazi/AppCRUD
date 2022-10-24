@@ -61,8 +61,17 @@ app.get("/agent", (req, res) => {
   });
 });
 
-  app.get("/create", (req, res) => {
-    res.render("create", { model: {} });
+app.get("/create", (req, res) => {
+  res.render("create", { model: {} });
+});
+
+  app.post("/create", (req, res) => {
+    const sql = "INSERT INTO Livres (Titre, Auteur, Commentaires) VALUES ($1, $2, $3)";
+    const book = [req.body.titre, req.body.auteur, req.body.commentaires];
+    pool.query(sql, book, (err, result) => {
+      // if (err) ...
+      res.redirect("/livres");
+    });
   });
 
 app.listen(PORT, () => {
