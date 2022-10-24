@@ -15,6 +15,11 @@ router.get("/about", (req, res) => {
   res.render(`about`);
 });
 
+//data
+router.get("/data", (req, res) => {
+  res.render(`data`);
+});
+
 
 
 module.exports = router;
