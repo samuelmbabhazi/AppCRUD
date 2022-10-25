@@ -89,6 +89,18 @@ app.post("/create", (req, res) => {
   });
 });
 
+
+// GET /delete/5
+app.get("/delete/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = "SELECT * FROM agent WHERE ID = $1";
+  pool.query(sql, [id], (err, result) => {
+    // if (err) ...
+    res.render("delete", { model: result.rows[0] });
+  });
+});
+
+
 app.listen(PORT, () => {
   console.log("Serveur démarré au port : " + PORT);
 });
