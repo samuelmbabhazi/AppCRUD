@@ -21,6 +21,7 @@ const pool = new Pool({
 });
 
 const sql_create = `
+
 CREATE TABLE IF NOT EXISTS agent (
   ID SERIAL PRIMARY KEY,
   noms VARCHAR(100) NOT NULL,
@@ -93,12 +94,13 @@ app.post("/create", (req, res) => {
 // GET /edit/5
 app.get("/edit/:id", (req, res) => {
   const id = req.params.id;
-  const sql = "SELECT * FROM Livres WHERE Livre_ID = $1";
+  const sql = "SELECT * FROM agent WHERE ID = $1";
   pool.query(sql, [id], (err, result) => {
     // if (err) ...
     res.render("edit", { model: result.rows[0] });
   });
 });
+
 
 
 // GET /delete/5
@@ -117,6 +119,21 @@ app.post("/delete/:id", (req, res) => {
   const sql = "DELETE FROM agent WHERE ID = $1";
   pool.query(sql, [id], (err, result) => {
     if (err) console.log(err);
+
+
+app.post("/edit/:id", (req, res) => {
+  const id = req.params.id;
+  const book = [
+    req.body.noms,
+    req.body.fonction,
+    req.body.contact,
+    req.body.adresse,
+    id,
+  ];
+  const sql =
+    "UPDATE agent SET noms = $1, fonction = $2, contact = $3, adresse = $4 WHERE (ID=$5)";
+  pool.query(sql, book, (err, result) => {
+    // if (err) ...
 
     res.redirect("/agent");
   });
