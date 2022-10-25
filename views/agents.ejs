@@ -6,45 +6,44 @@
 <h1 class="font-serif text-3xl font-bold underline decoration-gray-400 mb-2 text-center p-4">LISTE DES AGENTS</h1>
 
 <div class="table w-full p-2">
-  <a href="/create" class="bg-blue-500 p-2 right text-white hover:shadow-lg text-xs font-thin"> Ajouter</a>
-  <a href="/create"></a>
+ 
   <table class="w-full border">
     <thead>
       <tr class="bg-gray-50 border-b">
-        
         <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
           <div class="flex items-center justify-center">
             ID
-           
           </div>
         </th>
         <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
           <div class="flex items-center justify-center">
             Name
-            
             </svg>
           </div>
         </th>
         <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
           <div class="flex items-center justify-center">
             Function
-            
           </div>
         </th>
         <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
           <div class="flex items-center justify-center">
             Contact
-            
             </svg>
           </div>
         </th>
         <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
           <div class="flex items-center justify-center">
             Adress
-            
             </svg>
           </div>
         </th>
+        <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+          <div class="flex items-center justify-center">  
+            <a href="/create" class="bg-blue-500 p-2 w-full right text-white hover:shadow-lg text-sms "> Ajouter</a>
+          </div>
+        </th>
+        
       </tr>
     </thead>
     <% for (const agent of model) { %>
