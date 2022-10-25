@@ -21,7 +21,7 @@ const pool = new Pool({
 });
 
 const sql_create = `
-
+DROP TABLE agent ;
 CREATE TABLE IF NOT EXISTS agent (
   ID SERIAL PRIMARY KEY,
   noms VARCHAR(100) NOT NULL,
@@ -48,7 +48,13 @@ pool.query(sql_insert, [], (err, result) => {
   if (err) {
     return console.error(err.message);
   }
-  console.log("Alimentation réussie de la table 'agent'");
+  const sql_sequence = "SELECT SETVAL('agent_ID_Seq', MAX(ID)) FROM agent;";
+  pool.query(sql_sequence, [], (err, result) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    console.log("Alimentation réussie de la table 'Livres'");
+  });
 });
 
 app.get("/agent", (req, res) => {
