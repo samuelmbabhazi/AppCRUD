@@ -55,7 +55,7 @@ app.get("/agent", (req, res) => {
   pool.query(sql, [], (err, result) => {
     if (err) {
       return console.error(err.message);
-    }
+}
     console.log(result.rows);
     res.render("agents", { model: result.rows });
   });
@@ -66,7 +66,7 @@ app.get("/create", (req, res) => {
 });
 
   app.post("/create", (req, res) => {
-    const sql = "INSERT INTO Livres (Titre, Auteur, Commentaires) VALUES ($1, $2, $3)";
+    const sql = "INSERT INTO agent (ID, noms, fonction, contact,adresse) VALUES ($1, $2, $3, $4)";
     const book = [req.body.titre, req.body.auteur, req.body.commentaires];
     pool.query(sql, book, (err, result) => {
       // if (err) ...
