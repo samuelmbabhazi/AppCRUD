@@ -3,8 +3,7 @@
 <%- include("_header") -%>
 
 <div class="table w-full p-2">
-  <a href="/create" class="bg-blue-500 p-2 right text-white hover:shadow-lg text-xs font-thin"> Ajouter</a>
-  <a href="/create"></a>
+ 
   <table class="w-full border">
     <thead>
       <tr class="bg-gray-50 border-b">
@@ -42,6 +41,12 @@
             </svg>
           </div>
         </th>
+        <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
+          <div class="flex items-center justify-center">  
+            <a href="/create" class="bg-blue-500 p-2 w-full right text-white hover:shadow-lg text-sms "> Ajouter</a>
+          </div>
+        </th>
+        
       </tr>
     </thead>
     <% for (const agent of model) { %>
