@@ -1,8 +1,10 @@
+<script src="https://cdn.tailwindcss.com"></script>
+
 <%- include("_header") -%>
 
 <h1>Modifier une fiche</h1>
 
-<form action="/edit/<%= model.livre_id %>" method="post">
+<form action="/edit/<%= model.id %>" method="post">
   <div class="form-horizontal">
     <%- include("_editor") -%>
 
