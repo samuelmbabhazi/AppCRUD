@@ -1,8 +1,39 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 
-<%- include("_header") -%>
 
-<h1>Bonjour le monde...</h1>
+<div class="h-screen">
+    <%- include("_header") -%>
+    <img
+        src="image_fond.png"
+        alt="Storm image"
+        class="w-full h-2/4"
+    />
+
+    <div class="flex justify-around items-center align-middle h-2/4">
+        <img
+        src="images/doddy.png"
+        alt="Doddy's picture"
+        class="rounded-full w-40 h-40"
+    />
+    <img
+        src="images/rolly.png"
+        alt="Doddy's picture"
+        class="rounded-full w-40 h-40"
+    />
+
+    <img
+        src="images/sammy.png"
+        alt="Doddy's picture"
+        class="rounded-full w-40 h-40"
+    />
+
+    <img
+        src="images/valentin.png"
+        alt="Doddy's picture"
+        class="rounded-full w-40 h-40"
+    />
+    </div>
+</div>
 
 <%- include("_footer") -%>

@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-
+const img = "../public/images/image_fond.png";
 
 // accueil route
 router.get("/", (req, res) => {
-    res.render(`index`);
+    res.render(`index`, {image:img});
 });
 router.get("/accueil", (req, res) => {
     res.render(`index`);

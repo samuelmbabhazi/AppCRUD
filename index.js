@@ -9,6 +9,8 @@ app.set("views", path.join(__dirname, "views"));
 const routes = require("./controllers/routes");
 app.use(Express.urlencoded({ extended: false })); // <--- paramétrage du middleware
 
+app.use(Express.static("public"));
+
 app.use(routes);
 
 //connexion a la base de donnees
@@ -21,7 +23,6 @@ const pool = new Pool({
 });
 
 const sql_create = `
-
 CREATE TABLE IF NOT EXISTS agent (
   ID SERIAL PRIMARY KEY,
   noms VARCHAR(100) NOT NULL,
@@ -62,7 +63,7 @@ app.get("/agent", (req, res) => {
   pool.query(sql, [], (err, result) => {
     if (err) {
       return console.error(err.message);
-    }
+}
     console.log(result.rows);
     res.render("agents", { model: result.rows });
   });
@@ -138,6 +139,7 @@ app.post("/edit/:id", (req, res) => {
     res.redirect("/agent");
   });
 });
+
 
 
 app.listen(PORT, () => {
