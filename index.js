@@ -59,11 +59,11 @@ pool.query(sql_insert, [], (err, result) => {
 });
 
 app.get("/agent", (req, res) => {
-  const sql = "SELECT * FROM agent";
+  const sql = "SELECT * FROM agent ORDER BY ID ASC";
   pool.query(sql, [], (err, result) => {
     if (err) {
       return console.error(err.message);
-}
+    }
     console.log(result.rows);
     res.render("agents", { model: result.rows });
   });
@@ -101,8 +101,23 @@ app.get("/edit/:id", (req, res) => {
     res.render("edit", { model: result.rows[0] });
   });
 });
+app.post("/edit/:id", (req, res) => {
+  const id = req.params.id;
+  const book = [
+    req.body.noms,
+    req.body.fonction,
+    req.body.contact,
+    req.body.adresse,
+    id,
+  ];
+  const sql =
+    "UPDATE agent SET noms = $1, fonction = $2, contact = $3, adresse = $4 WHERE (ID=$5) ";
+  pool.query(sql, book, (err, result) => {
+    // if (err) ...
 
-
+    res.redirect("/agent");
+  });
+});
 
 // GET /delete/5
 app.get("/delete/:id", (req, res) => {
@@ -120,27 +135,9 @@ app.post("/delete/:id", (req, res) => {
   const sql = "DELETE FROM agent WHERE ID = $1";
   pool.query(sql, [id], (err, result) => {
     if (err) console.log(err);
-
-
-app.post("/edit/:id", (req, res) => {
-  const id = req.params.id;
-  const book = [
-    req.body.noms,
-    req.body.fonction,
-    req.body.contact,
-    req.body.adresse,
-    id,
-  ];
-  const sql =
-    "UPDATE agent SET noms = $1, fonction = $2, contact = $3, adresse = $4 WHERE (ID=$5)";
-  pool.query(sql, book, (err, result) => {
-    // if (err) ...
-
     res.redirect("/agent");
   });
 });
-
-
 
 app.listen(PORT, () => {
   console.log("Serveur démarré au port : " + PORT);
