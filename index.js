@@ -85,6 +85,15 @@ app.post("/create", (req, res) => {
     res.redirect("/agent");
   });
 });
+// GET /edit/5
+app.get("/edit/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = "SELECT * FROM Livres WHERE Livre_ID = $1";
+  pool.query(sql, [id], (err, result) => {
+    // if (err) ...
+    res.render("edit", { model: result.rows[0] });
+  });
+});
 
 app.listen(PORT, () => {
   console.log("Serveur démarré au port : " + PORT);
