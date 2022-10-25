@@ -97,7 +97,7 @@ app.get("/edit/:id", (req, res) => {
 
 
 // GET /delete/5
-app.get("/delete/:id", (req, res) => {
+app.get("/delete/:ID", (req, res) => {
   const id = req.params.id;
   const sql = "SELECT * FROM agent WHERE ID = $1";
   pool.query(sql, [id], (err, result) => {
