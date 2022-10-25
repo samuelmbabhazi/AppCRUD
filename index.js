@@ -53,7 +53,7 @@ pool.query(sql_insert, [], (err, result) => {
     if (err) {
       return console.error(err.message);
     }
-    console.log("Alimentation réussie de la table 'Livres'");
+    console.log("Alimentation réussie de la table 'agents'");
   });
 });
 
@@ -101,6 +101,26 @@ app.get("/edit/:id", (req, res) => {
   });
 });
 
+
+
+// GET /delete/5
+app.get("/delete/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = "SELECT * FROM agent WHERE ID = $1";
+  pool.query(sql, [id], (err, result) => {
+    // if (err) ...
+    res.render("delete", { model: result.rows[0] });
+  });
+});
+
+// POST /delete/5
+app.post("/delete/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = "DELETE FROM agent WHERE ID = $1";
+  pool.query(sql, [id], (err, result) => {
+    if (err) console.log(err);
+
+
 app.post("/edit/:id", (req, res) => {
   const id = req.params.id;
   const book = [
@@ -114,9 +134,11 @@ app.post("/edit/:id", (req, res) => {
     "UPDATE agent SET noms = $1, fonction = $2, contact = $3, adresse = $4 WHERE (ID=$5)";
   pool.query(sql, book, (err, result) => {
     // if (err) ...
+
     res.redirect("/agent");
   });
 });
+
 
 app.listen(PORT, () => {
   console.log("Serveur démarré au port : " + PORT);

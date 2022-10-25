@@ -1,6 +1,9 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
+
 <%- include("_header") -%>
+
+<h1 class="font-serif text-3xl font-bold underline decoration-gray-400 mb-2 text-center p-4">LISTE DES AGENTS</h1>
 
 <div class="table w-full p-2">
  
@@ -62,9 +65,9 @@
             >Edit</a
           >
           <a
-            href="#"
+            href=<%= "/delete/" + agent.id %>
             class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin"
-            >Remove</a
+            >Remove</a  
           >
         </td>
       </tr>
