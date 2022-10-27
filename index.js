@@ -1,16 +1,19 @@
-const Express = require("express");
+const express = require("express");
 const path = require("path");
-const app = Express();
+const app = express();
 const { Pool } = require("pg");
 const PORT = 4000;
 
+//views
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 const routes = require("./controllers/routes");
-app.use(Express.urlencoded({ extended: false })); // <--- paramétrage du middleware
+app.use(express.urlencoded({ extended: false })); // <--- paramétrage du middleware
 
-app.use(Express.static("public"));
+//Gestion medias
+app.use(express.static("public"));
 
+//Deffintion routes
 app.use(routes);
 
 //connexion a la base de donnees
@@ -138,6 +141,9 @@ app.post("/delete/:id", (req, res) => {
     res.redirect("/agent");
   });
 });
+
+
+
 
 app.listen(PORT, () => {
   console.log("Serveur démarré au port : " + PORT);
