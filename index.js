@@ -11,7 +11,7 @@ app.use(routes);
 //Gestion medias
 app.use(express.static("public"));
 
-//views
+//views 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
