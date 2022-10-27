@@ -1,6 +1,6 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
-<%- include("_header") -%>
+<%- include("./includes/_header") -%>
 
 <h1
   id="defaultModal"
@@ -13,7 +13,7 @@
 
 <form action="/edit/<%= model.id %>" method="post">
   <div class="form-horizontal">
-    <%- include("_editor") -%>
+    <%- include("./includes/_editor") -%>
 
     <div class="form-group row">
       <label class="col-form-label col-sm-2"></label>
@@ -29,4 +29,4 @@
   </div>
 </form>
 
-<%- include("_footer") -%>
+<%- include("./includes/_footer") -%>
